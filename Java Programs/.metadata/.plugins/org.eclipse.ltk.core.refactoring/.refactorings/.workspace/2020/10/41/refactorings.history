@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;MaxSumSubArray&apos;" deleteContents="false" description="Delete resource &apos;MaxSumSubArray&apos;" element1="/MaxSumSubArray" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1601956321254"/>
+</session>

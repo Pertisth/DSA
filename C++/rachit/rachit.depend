@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1591188942 source:f:\programs\rachit\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

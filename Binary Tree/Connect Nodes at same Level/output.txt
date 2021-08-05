@@ -1,0 +1,5 @@
+nextRight of 10 is : -1
+nextRight of 20 is : 30
+nextRight of 30 is : -1
+nextRight of 40 is : 60
+nextRight of 60 is : -1

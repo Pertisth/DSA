@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1587475445 source:f:\programs\balanced paranthesis\main.cpp
+	<iostream>
+	<stack>
+	<string>
+

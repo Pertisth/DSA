@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1590166235 source:f:\programs\linkedlistudemy\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+

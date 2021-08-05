@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1615974219 source:f:\programs\stack\infix to prefix\main.cpp
+	<iostream>
+	<stack>
+

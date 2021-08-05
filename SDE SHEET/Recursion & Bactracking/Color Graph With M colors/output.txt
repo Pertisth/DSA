@@ -1,0 +1,5 @@
+Success!!
+Node 0 colored with  1
+Node 1 colored with  2
+Node 2 colored with  3
+Node 3 colored with  2

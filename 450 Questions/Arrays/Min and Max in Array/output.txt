@@ -1,0 +1,2 @@
+Min in array is : 1
+Max in array is : 3000

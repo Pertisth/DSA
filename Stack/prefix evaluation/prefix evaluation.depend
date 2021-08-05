@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1615978066 source:f:\programs\stack\prefix evaluation\main.cpp
+	<iostream>
+	<stack>
+	<math.h>
+	<string>
+

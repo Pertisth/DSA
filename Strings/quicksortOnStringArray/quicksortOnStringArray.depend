@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1614271421 source:f:\programs\strings\quicksortonstringarray\main.cpp
+	<iostream>
+	<time.h>
+

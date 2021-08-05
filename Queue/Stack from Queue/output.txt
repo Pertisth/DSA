@@ -1,0 +1,9 @@
+Inserting Item : 1
+Inserting Item : 2
+Inserting Item : 3
+Inserting Item : 4
+Inserting Item : 5
+Popping Element : 5
+Popping Element : 4
+Size of Stack : 3
+Top element in Stack is : 3
