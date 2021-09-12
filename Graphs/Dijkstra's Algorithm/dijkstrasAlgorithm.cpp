@@ -61,17 +61,17 @@ int main()
 	cin >> v >> e;
 	vector<pair<int, int>>list[v + 1];
 	addEdge(list, e);
-	// int source, destination;
-	// cin >> source >> destination;
-	// cout << dijkstraAlgorithm(list, v, source, destination);
-	for (int i = 1; i <= v; i++)
-	{
-		cout << i << "->";
-		for (auto x : list[i])
-		{
-			cout << x.first << " ";
-		}
-		cout << endl;
-	}
+	int source, destination;
+	cin >> source >> destination;
+	cout << dijkstraAlgorithm(list, v, source, destination);
+	// for (int i = 1; i <= v; i++)
+	// {
+	// 	cout << i << "->";
+	// 	for (auto x : list[i])
+	// 	{
+	// 		cout << x.first << " ";
+	// 	}
+	// 	cout << endl;
+	// }
 	return 0;
 }

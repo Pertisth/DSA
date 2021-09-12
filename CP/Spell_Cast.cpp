@@ -1,40 +1,74 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
 using namespace std;
 
-bool canPartition(vector<vector<int>>&dp, vector<int>&arr, int n, int sum, int idx)
+int getSum(vector<int>&st, int qs, int qe, int ss, int se, int si)
 {
-	if (idx >= n)
+	if (se < qs || ss > qe)
 	{
-		return false;
+		return 0;
 	}
-	if (dp[idx][currSum] != -1)
+	if (qs <= ss && qe >= se)
 	{
-		return true;
+		return st[si];
 	}
-	dp[idx + 1][currSum + arr[idx]] = canPartition(dp, arr, n, sum, idx + 1, currSum + arr[idx]) ? 1 : 0;
+	int mid = (ss + se) >> 1;
 
-	dp[idx + 1][currSum] = canPartition(dp, arr, n, sum, idx + 1, currSum) ? 1 : 0;
-	return dp[idx][currSum] == 1 ? true : false;
+	return getSum(st, qs, qe, ss, mid, 2 * si + 1) + getSum(st, qs, qe, mid + 1, se, 2 * si + 2);
+}
+
+
+
+
+// construction of segment tree
+
+int constructSTUtil(int as, int ae, int si, vector<int>&st, vector<int>&arr)
+{
+	if (as == ae)
+	{
+		st[si] = arr[as];
+		return arr[as];
+	}
+	int mid = (as + ae) / 2;
+
+	st[si] = constructSTUtil(as, mid, 2 * si + 1, st, arr) + constructSTUtil(mid + 1, ae, 2 * si + 2, st, arr);
+	return st[si];
+
+}
+
+void constructST(vector<int>&arr, int n, vector<int>&st)
+{
+	int aStart = 0;
+	int aEnd = n - 1;
+	int STindex = 0;
+	constructSTUtil(aStart, aEnd, STindex, st, arr);
 
 }
 
 
+
 int main()
 {
-
 #ifndef ONLINE_JUDGE
 	freopen("input.txt", "r", stdin);
 	freopen("output.txt", "w", stdout);
 #endif
 
-	vector<int>arr{1, 5, 11, 5};
-	int maxSum = 22;
-	int sum = maxSum / 2;
-	int currSum = 0;
-	int n = 4;
-	vector<vector<int>>dp(n + 1, vector<int>(sum + 1, -1));
-	cout <<  canPartition(dp, arr, n, sum, 0, currSum);
+	int n, k;
+	cin >> n >> k;
+	vector<int>arr(n);
+	for (int i = 0; i < n; i++)
+	{
+		cin >> arr[i];
+	}
+	vector<int>st(4 * n + 1);
+	constructST(arr, n, st);
+	while (k--)
+	{
+		int low, high;
+		cin >> low >> high;
+		cout << getSum(st, low, high, 0, n - 1, 0) << endl;
+	}
 
 	return 0;
-
 }

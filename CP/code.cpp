@@ -1,48 +1,48 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
 using namespace std;
 
-
-void findSubsequence(string str, int idx, int n, string &res, string temp)
+void swapArr(int &a, int &b)
 {
-    if (idx == str.length())
-    {
-        if (temp.size() == n)
-        {
-            cout << temp << " ";
-        }
-
-        return;
-    }
-
-    findSubsequence(str, idx + 1, n, res, temp + str[idx]);
-    findSubsequence(str, idx + 1, n, res, temp);
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
 }
 
-void permu(string user, string mother, int n)
+
+void reArrange(vector<int>&arr, int n)
 {
-    map<char, int>arr1;
-    map<char, int>arr2;
-    for (int i = 0; i < user.length(); i++)
+    int low = 0;
+    int mid = 0;
+    int high = arr.size() - 1;
+
+    while (mid <= high)
     {
-        arr1[user[i]]++;
-    }
-    for (int i = 0; i < mother.length(); i++)
-    {
-        arr2[mother[i]]++;
-    }
-    string common = "";
-    for (auto  x : arr1)
-    {
-        if (arr2.find(x.first) != arr2.end())
+        if (arr[mid] == 0)
         {
-            common = common + x.first;
+            mid++;
+        }
+        else if (arr[mid] >= 1)
+        {
+            swap(arr[mid], arr[high]);
+            cout << "Positive " << arr[mid] << " " << arr[high] << endl;
+            high--;
+        }
+        else if (arr[mid] <= -1)
+        {
+            swap(arr[mid], arr[low]);
+            low++;
+            mid++;
+
         }
     }
-    // cout << common;
-    string res = "";
-    string temp = "";
-    findSubsequence(common, 0, n, res, temp);
-    cout << res << endl;
+
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+
+    }
 }
 
 
@@ -53,14 +53,13 @@ int main()
     freopen("output.txt", "w", stdout);
 #endif
 
-    string user;
-    string mother;
     int n;
-    cin >> user >> mother >> n;
-    transform(user.begin(), user.end(), user.begin(), ::tolower);
-    transform(mother.begin(), mother.end(), mother.begin(), ::tolower);
-    permu(user, mother, n);
-
-
+    cin >> n;
+    vector<int>arr(n);
+    for (int i = 0; i < 3; i++)
+    {
+        cin >> arr[i];
+    }
+    reArrange(arr, n);
     return 0;
 }

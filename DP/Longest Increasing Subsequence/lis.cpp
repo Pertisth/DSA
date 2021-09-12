@@ -19,6 +19,31 @@ int lis(vector<int>&arr, int idx, int prev)
 
 }
 
+// memoization
+int lisMemo(vector<int>&arr, int idx, int prev, vector<vector<int>>&dp)
+{
+	if (idx == arr.size())
+	{
+		return 0;
+	}
+	if (dp[prev][idx] != -1)
+	{
+		return dp[prev][idx];
+	}
+	int notPick = lisMemo(arr, idx + 1, prev, dp);
+	int pick = 0;
+	if (prev == -1 || arr[idx] > arr[prev])
+	{
+		pick = 1 + lisMemo(arr, idx + 1, idx, dp);
+	}
+	if (prev == -1)
+	{
+		return dp[prev][idx] = max(pick, notPick);
+	}
+	return max(pick, notPick);
+	// return dp[idx];
+}
+
 
 // dp
 int lisDP(vector<int>&arr)
@@ -67,7 +92,8 @@ int main()
 		cin >> ele;
 		arr.push_back(ele);
 	}
-	cout << lis(arr, 0, INT_MIN);
+	vector<vector<int>>dp(n + 1, vector<int>(n + 1, -1));
+	cout << lisMemo(arr, 0, -1, dp);
 
 	// cout << lisDP(arr);
 	return 0;

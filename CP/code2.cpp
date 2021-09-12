@@ -2,89 +2,39 @@
 #include<vector>
 using namespace std;
 
-void concatenate(string str)
+
+int solve(int arr[], int n, int k, vector<int>&dp)
 {
-	int startptr = 0;
-	int endptr;
-	for (int i = 0; i < str.length(); i++)
+	if (n == 0)
 	{
-		if (str[i] == ':' && str[i + 1] == ':')
+		return 0;
+	}
+	if (dp[n] != -1)
+	{
+		return dp[n];
+	}
+	int mini = INT_MAX;
+	for (int i = 1; i <= k; i++)
+	{
+		if (n - i >= 0)
 		{
-			endptr = i + 2;
-			break;
+			mini = min(mini, solve(arr, n - i, k, dp) + abs(arr[n] - arr[n - i]));
 		}
 	}
-
-	string res = "";
-	while (endptr != str.length())
-	{
-		if (str[startptr] == ';')
-		{
-			startptr++;
-		}
-		res = res + str[startptr];
-		res = res + str[endptr];
-		startptr++;
-		endptr++;
-	}
-	cout << res << endl;
-}
-
-
-void insertEle(int arr[], int pos, int val)
-{
-	//5,3,2,7,6,9,8
-	int n;
-	n = sizeof(arr) / sizeof(arr[0]);
-	bool flag = false;
-	vector<int>newArr(n + 1, 0);
-	for (int i = 0; i < n; i++)
-	{
-		if (i != pos)
-		{
-			int ele = arr[i];
-			newArr.push_back(ele);
-			flag = true;
-		}
-		if (flag)
-		{
-			newArr.push_back(val);
-		}
-
-	}
-	for (int i = 0; i < newArr.size(); i++)
-	{
-		cout << newArr[i] << " ";
-	}
-
+	return dp[n] = mini;
 }
 
 
 int main()
 {
-#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-#endif
-
-	int n;
-	cin >> n;
+	int n, k;
+	cin >> n >> k;
 	int arr[n];
 	for (int i = 0; i < n; i++)
 	{
 		cin >> arr[i];
 	}
-	int pos;
-	cin >> pos;
-	int val;
-	cin >> val;
-
-
-	insertEle(arr, pos, val);
-
-
+	vector<int>dp(n + 1, -1);
+	cout << solve(arr, n - 1, k, dp);
 	return 0;
-
-
-
 }

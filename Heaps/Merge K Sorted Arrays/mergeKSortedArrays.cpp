@@ -64,12 +64,11 @@ int main()
 	freopen("output.txt", "w", stdout);
 #endif
 	vector<vector<int>>arr {
-		{5, 10},
-		{4, 9},
-		{6, 12, 13, 50},
-		{1, 5, 13, 15}
+		{1, 2, 3},
+		{10, 11, 12},
+		{7, 8, 9}
 	};
-	int k = 4;
+	int k = 3;
 	vector<int>res = mergeKSortedArrays(arr, k);
 	for (int i = 0; i < res.size(); i++)
 	{
