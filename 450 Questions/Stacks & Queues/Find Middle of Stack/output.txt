@@ -1,0 +1,7 @@
+Middle Element : 3
+Middle Element : 4
+Middle Element : 2
+Middle Element : 2
+Middle Element : 1
+1
+Stack underflow-1

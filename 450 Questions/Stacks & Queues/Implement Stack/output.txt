@@ -1,0 +1,4 @@
+Pop : 3
+Top : 2
+Stack overflow
+5

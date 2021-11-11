@@ -43,6 +43,27 @@ int knapSackDP(vector<int>&values, vector<int>&weights, int w, int idx, int weig
 	return dp[idx][weight];
 }
 
+// iterative Solution
+
+// int iterativeDp(vector<int>&values, vector<int>&weight, int wt)
+// {
+// 	int n = values.size();
+// 	vector<vector<int>>dp(n + 1, vector<int>(wt + 1, 0));
+// 	for (int i = n - 1; i >= 0; i--)
+// 	{
+// 		for (int j = 0 ; j <= wt; j++)
+// 		{
+// 			int notPick = dp[i + 1][j];
+// 			int pick = INT_MIN;
+// 			if (i < n - 1 && j + weight[i + 1] <= wt)
+// 			{
+// 				pick = values[i + 1] + dp[i + 1][j + weight[i + 1]];
+// 			}
+// 			dp[i][j] = max(pick, notPick);
+// 		}
+// 	}
+// 	return dp[0][0];
+// }
 
 
 
@@ -72,6 +93,8 @@ int main()
 	cin >> w;
 	// cout << knapSack(values, weights, w, 0, 0 );
 	vector<vector<int>>dp (1000, vector<int>(1000, -1));
-	cout << knapSackDP(values, weights, w, 0, 0 , dp);
+	cout << knapSackDP(values, weights, w, 	0, 0 , dp);
+
+	// cout << iterativeDp(values, weights, w);
 	return 0;
 }
