@@ -6,12 +6,12 @@ private:
 	int parent[100000];
 	int rank[100000];
 public:
-	void makeSet(int n)
+	DisjointSet(int n)
 	{
 		for (int i = 1; i <= n; i++)
 		{
 			parent[i] = i;
-			rank[0];
+			rank[i] = 0;
 		}
 	}
 	int findPar(int node)
@@ -23,7 +23,7 @@ public:
 		return parent[node] = findPar(parent[node]);
 	}
 
-	void union(int u, int v)
+	void unionR(int u, int v)
 	{
 		u = findPar(u);
 		v = findPar(v);
@@ -43,16 +43,21 @@ public:
 	}
 };
 
+
+
 int main()
 {
 
+	int n;
+	cin >> n;
+	DisjointSet ds(n);
 	int t;
 	cin >> t;
 	while (t--)
 	{
 		int u, v;
 		cin >> u >> v;
-		union(u, v);
+		ds.unionR(u, v);
 	}
 
 	return 0;
