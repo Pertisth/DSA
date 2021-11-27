@@ -37,6 +37,25 @@ public:
 		int mid = (low + high) >> 1;
 		return max(searchMx(2 * idx + 1, low, mid, l, r), searchMx(2 * idx + 2, mid + 1, high, l, r));
 	}
+	void updateMx(int idx, int low, int high, int i, int value, vector<int>&arr)
+	{
+		if (low == high)
+		{
+			st[idx] = value;
+			arr[i] = value;
+			return;
+		}
+		int mid = (low + high) >> 1;
+		if (i <= mid)
+		{
+			updateMx(2 * idx + 1, low, mid, i, value, arr);
+		}
+		else
+		{
+			updateMx(2 * idx + 2, mid + 1, high, i, value, arr);
+		}
+		st[idx] = max(st[2 * idx + 1], st[2 * idx + 2]);
+	}
 };
 
 int main()
@@ -58,9 +77,20 @@ int main()
 	cin >> q;
 	while (q--)
 	{
-		int l, r;
-		cin >> l >> r;
-		cout << st.searchMx(0, 0, n - 1, l, r) << endl;
+		int type;
+		cin >> type;
+		if (type == 1)
+		{
+			int l, r;
+			cin >> l >> r;
+			cout << st.searchMx(0, 0, n - 1, l, r) << endl;
+		}
+		else
+		{
+			int i, val;
+			cin >> i >> val;
+			st.updateMx(0, 0, n - 1, i, val, arr);
+		}
 	}
 	return 0;
 }
