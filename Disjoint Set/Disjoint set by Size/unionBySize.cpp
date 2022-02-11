@@ -24,7 +24,7 @@ public:
 		{
 			return node;
 		}
-		parent[node] = findPar(parent[node]);
+		return parent[node] = findPar(parent[node]);
 	}
 
 	void unionBySize(int a, int b)
