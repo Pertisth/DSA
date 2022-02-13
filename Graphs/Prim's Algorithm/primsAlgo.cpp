@@ -15,7 +15,7 @@ void primsAlgo(vector<pair<int, int>>list[], int v)
 	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>que;
 	que.push({0, 0});
 
-	for (int i = 0; i < v - 1; i++)
+	while(!pq.empty())
 	{
 		int min = que.top().first;
 		int idx = que.top().second;
